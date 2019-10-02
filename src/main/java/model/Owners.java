@@ -14,7 +14,7 @@ public class Owners  {
 	
 	@Id
 	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "enhanced-sequence")
-	@javax.persistence.GeneratedValue(strategy = GenerationType.AUTO)
+	@javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
 //	@GenericGenerator(strategy = "enhanced-sequence", name = "seg")
 	private Long id;
 
