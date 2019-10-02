@@ -77,7 +77,7 @@ public class InitialHibernate {
     	catch (Exception e) {
     		// The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
     		// so destroy it manually.
-    		System.out.println(e.getMessage()+" ���-�� ����� �� ���.");
+    		System.out.println(e.getMessage()+" Ошибочка вышла");
     	//e.printStackTrace();
     		StandardServiceRegistryBuilder.destroy( registry );
     	}
