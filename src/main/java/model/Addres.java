@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class Addres implements Serializable {
 		
 	@Id
-    @javax.persistence.GeneratedValue(strategy = GenerationType.IDENTITY)
+    @javax.persistence.GeneratedValue(strategy = GenerationType.TABLE)
 	//@GenericGenerator(name = "seq", strategy = "enhanced-sequence")
 	private Long id;
 	
