@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class Addres implements Serializable {
 		
 	@Id
-	@GenericGenerator(name = "seq", strategy = "enhanced-sequence")
+	//@GenericGenerator(name = "seq", strategy = "enhanced-sequence")
 	private Long id;
 	
 	@Column(name="street", nullable=false)

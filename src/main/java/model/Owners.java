@@ -15,7 +15,7 @@ public class Owners  {
 	@Id
 	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "enhanced-sequence")
 	@GeneratedValue
-	@GenericGenerator(strategy = "enhanced-sequence", name = "seg")
+//	@GenericGenerator(strategy = "enhanced-sequence", name = "seg")
 	private Long id;
 
 	@Column(name = "first_name")	
