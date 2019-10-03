@@ -1,11 +1,8 @@
-package model;
+package model2;
 
-import org.hibernate.annotations.GenerationTime;
-import org.hibernate.annotations.GenericGenerator;
+import model2.AddresEmbeded;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,21 +10,21 @@ import java.util.Set;
 
 @Entity
 @Table(name="owners")
-public class Owners  {
-	
+public class OwnersWithAddres {
+
 	@Id
 	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "enhanced-sequence")
-	@javax.persistence.GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 //	@GenericGenerator(strategy = "enhanced-sequence", name = "seg")
 	private Long id;
 
-	@Column(name = "first_name")	
-	private String firstName;	
-	
-	@Column(name = "last_name")	
+	@Column(name = "first_name")
+	private String firstName;
+
+	@Column(name = "last_name")
 	private String   lastName;
-	
-	@Column(name="age_owner")	
+
+	@Column(name="age_owner")
 	private Integer age ;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -35,27 +32,29 @@ public class Owners  {
 	@org.hibernate.annotations.CreationTimestamp
          private Timestamp timestamp;
 
+	private AddresEmbeded addres;
 
-//	@Temporal(TemporalType.TIMESTAMP)
+	public AddresEmbeded getAdress(){
+		return addres;
+	}
+
+	public void setAddres(AddresEmbeded addres) {
+		this.addres = addres;
+
+	}
+	//	@Temporal(TemporalType.TIMESTAMP)
 //	@Column(name = "last_modific", updatable = false, insertable = false, nullable = false)
 //	@org.hibernate.annotations.Generated(
 //			GenerationTime.INSERT
 //	)
 
+	public OwnersWithAddres() {}
 
-	@javax.persistence.Transient
+	public OwnersWithAddres(String firstName, String lastName, Integer age) {
 
-	private Set<Addres> adreses;
-	
-	public Owners() {}
-
-	public Owners(String firstName, String lastName, Integer age) {
-		adreses = new HashSet<Addres>();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
-
-
 
 	}
 
@@ -79,12 +78,4 @@ public class Owners  {
 		this.age = age;
 	}
 
-
-	public Set<Addres> getAdreses() {
-		return adreses;
-	}
-	
-	public void setAdress(Addres adr) {
-		adreses.add(adr);
-	}
 }

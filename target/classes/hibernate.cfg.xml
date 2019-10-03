@@ -5,9 +5,10 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.password">root</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate</property>
+        <property name="hibernate.connection.password">root</property>
         <property name="hibernate.connection.username">root</property>
+
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name="hibernate.current_session_context_class">thread</property> 
         <!-- Drop and re-create the database schema on startup -->
@@ -18,9 +19,10 @@
 		<property name="hibernate.dbcp.maxIdle">10</property>
 		<property name="hibernate.dbcp.minIdle">5</property>
 		<property name="hibernate.dbcp.maxWaitMillis">-1</property>
-		<property name="hibernate.id.new_generator_mappings">false</property>
+        <property name="hibernate.id.new_generator_mappings">true</property>
 		
-        <mapping class="model.Addres"/>
-        <mapping class="model.Owners"/>
+        <mapping class="model2.AddresEmbeded"/>
+        <mapping class="model2.OwnersWithAddres"/>
+
     </session-factory>
 </hibernate-configuration>

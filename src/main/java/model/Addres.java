@@ -7,13 +7,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 
-@Entity
-@Table(name="adress")
-public class Addres implements Serializable {
+//@Entity
+//@Table(name="adress")
+public class Addres  {
 		
-	@Id
-    @javax.persistence.GeneratedValue(strategy = GenerationType.TABLE)
-	//@GenericGenerator(name = "seq", strategy = "enhanced-sequence")
+//	  @Id
+//    @javax.persistence.GeneratedValue(strategy = GenerationType.AUTO)
+//	//@GenericGenerator(name = "seq", strategy = "enhanced-sequence")
 	private Long id;
 	
 	@Column(name="street", nullable=false)
@@ -25,10 +25,10 @@ public class Addres implements Serializable {
 	
 	public Addres() {}
 
-	public Addres(String street, Owners owners) {
+	public Addres(String street) {
 		
 		this.street = street;
-		this.owners = owners;
+
 	}
 
 	public String getStreet() {
