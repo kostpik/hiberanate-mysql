@@ -1,9 +1,9 @@
 package util;
 
 import model2.AddresEmbeded;
+import model3.Owners;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import model2.OwnersWithAddres;
 import session.InitialHibernate;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,23 +27,39 @@ public class MySQL_Start {
 //     MetadataBuilder metadataBuilder = metadataSourse.getMetadataBuilder();
 //     Metadata metadata =  metadataBuilder.build();
      
-     OwnersWithAddres owner = new OwnersWithAddres("Константин", "Иванов", 33);
-     OwnersWithAddres owner2 = new OwnersWithAddres("Виктор", "Круглов", 37);
-     OwnersWithAddres owner3 = new OwnersWithAddres("Буратино", "Смирнов", 37);
-     OwnersWithAddres owner4 = new OwnersWithAddres("Колян", "Тугоухов", 36);
-     AddresEmbeded adrr   = new AddresEmbeded("radicsheva");
-     AddresEmbeded adrr2  = new AddresEmbeded("krestovaja");
-     AddresEmbeded adrr3  = new AddresEmbeded("centralnaya");
-     AddresEmbeded adrr4  = new AddresEmbeded("nameberejnaya");
+//     OwnersWithAddres owner = new OwnersWithAddres("Константин", "Иванов", 33);
+//     OwnersWithAddres owner2 = new OwnersWithAddres("Виктор", "Круглов", 37);
+//     OwnersWithAddres owner3 = new OwnersWithAddres("Буратино", "Смирнов", 37);
+//     OwnersWithAddres owner4 = new OwnersWithAddres("Колян", "Тугоухов", 36);
+//     AddresEmbeded adrr   = new AddresEmbeded("radicsheva");
+//     AddresEmbeded adrr2  = new AddresEmbeded("krestovaja");
+//     AddresEmbeded adrr3  = new AddresEmbeded("centralnaya");
+//     AddresEmbeded adrr4  = new AddresEmbeded("nameberejnaya");
+//
+//        List<OwnersWithAddres> ownersList = new ArrayList<>();
+//        ownersList.add(owner); ownersList.add(owner2); ownersList.add(owner3); ownersList.add(owner4);
+       // owner.setAddress(adrr); owner2.setAddress(adrr2); owner3.setAddress(adrr3); owner4.setAddress(adrr4);
 
-        List<OwnersWithAddres> ownersList = new ArrayList<>();
+        Owners owner = new Owners("Константин", "Иванов", 33);
+        Owners owner2 = new Owners("Виктор", "Круглов", 37);
+        Owners owner3 = new Owners("Буратино", "Смирнов", 37);
+        Owners owner4 = new Owners("Колян", "Тугоухов", 36);
+        AddresEmbeded adrr   = new AddresEmbeded("radicsheva");
+        AddresEmbeded adrr2  = new AddresEmbeded("krestovaja");
+        AddresEmbeded adrr3  = new AddresEmbeded("centralnaya");
+        AddresEmbeded adrr4  = new AddresEmbeded("nameberejnaya");
+
+        List<Owners> ownersList = new ArrayList<>();
         ownersList.add(owner); ownersList.add(owner2); ownersList.add(owner3); ownersList.add(owner4);
-        //owner.setAdress(adrr); owner2.setAdress(adrr2); owner3.setAdress(adrr3); owner4.setAdress(adrr4);
-        for (OwnersWithAddres ent: ownersList) {
+       owner.setAdress("Радищева");
+       owner.setAdress("Стоялая");
+       owner.setAdress("Пушкина");
+        short count=0;
+        for (Owners ent: ownersList) {
+            System.out.println("iteration number " + ++count);
             session.persist(ent);
         }
-        session.persist(adrr);
-
+        //session.persist(adrr);
         owner.setFirstName("Крокодил");
         tx.commit();
         session.close();

@@ -18,9 +18,7 @@ public class Addres  {
 	
 	@Column(name="street", nullable=false)
 	private String  street;
-	
-	@ManyToOne
-	  // @JoinColumn(name="ADDR_ID")
+
     private Owners owners;
 	
 	public Addres() {}

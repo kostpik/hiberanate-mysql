@@ -1,21 +1,23 @@
-package model2;
+package model3;
 
-import model2.AddresEmbeded;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Entity
 @Table(name="owners")
-public class OwnersWithAddres {
-
+public class Owners  {
+	
+//	@Id
+//	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "enhanced-sequence")
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//    //@GenericGenerator(strategy = "enhanced-sequence", name = "seg")
 	@Id
-	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "enhanced-sequence")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-//	@GenericGenerator(strategy = "enhanced-sequence", name = "seg")
+	@javax.persistence.GeneratedValue(strategy = GenerationType.AUTO)
+	@GenericGenerator(name = "seq", strategy = "enhanced-sequence")
 	private Long id;
 
 	@Column(name = "first_name")
@@ -30,21 +32,24 @@ public class OwnersWithAddres {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "last_modification", updatable = false)
 	@org.hibernate.annotations.CreationTimestamp
-	private Timestamp timestamp;
-	private	AddresEmbeded addres;
+         private Timestamp timestamp;
 
-
-
-	//	@Temporal(TemporalType.TIMESTAMP)
+//	@Temporal(TemporalType.TIMESTAMP)
 //	@Column(name = "last_modific", updatable = false, insertable = false, nullable = false)
 //	@org.hibernate.annotations.Generated(
 //			GenerationTime.INSERT
 //	)
 
+    @ElementCollection
+	@CollectionTable(
+			name = "address",
+	        joinColumns =@JoinColumn(name = "address_id"))
+	@Column(name = "street")
+	private Set<String> adreses = new HashSet<>();
 
-	public OwnersWithAddres() {}
+	public Owners() {}
 
-	public OwnersWithAddres(String firstName, String lastName, Integer age) {
+	public Owners(String firstName, String lastName, Integer age) {
 
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -59,26 +64,24 @@ public class OwnersWithAddres {
 	public String getFirstName() {
 		return firstName;
 	}
-
+	
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
+	
 	public Integer getAge() {
 		return age;
 	}
-
+	
 	public void setAge(Integer age) {
 		this.age = age;
 	}
 
-	public AddresEmbeded getAdress(){
-		return addres;
+	public Set<String> getAdreses() {
+		return adreses;
 	}
-
-	public void setAddress(AddresEmbeded addres) {
-		this.addres = addres;
-
+	
+	public void setAdress(String adress) {
+		adreses.add(adress);
 	}
-
 }
